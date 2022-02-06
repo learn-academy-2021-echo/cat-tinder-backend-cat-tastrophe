@@ -24,7 +24,6 @@ end
 
 describe "POST /create" do
   it "creates a cat" do
-    # The params we are going to send with the request
     cat_params = {
       cat: {
         name: "Homer",
@@ -34,16 +33,12 @@ describe "POST /create" do
       }
     }
 
-    # Send the request to the server
     post '/cats', params: cat_params
 
-    # Assure that we get a success back
     expect(response).to have_http_status(200)
 
-    # Look up the cat we expect to be created in the db
     cat = Cat.first
 
-    # Assure that the created cat has the correct attributes
     expect(cat.name).to eq 'Homer'
   end
 end
